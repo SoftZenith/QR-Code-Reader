@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { NgxQRCodeModule } from "ngx-qrcode2";
 import { BarcodeScanner } from "@ionic-native/barcode-scanner";
+import { Contacts } from "@ionic-native/contacts";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { BarcodeScanner } from "@ionic-native/barcode-scanner";
     StatusBar,
     SplashScreen,
     BarcodeScanner,
+    Contacts,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
