@@ -14,6 +14,11 @@ export class HomePage {
   qrData = null;
   scannedCode = null;
   msj=null;
+  name="name";
+  lastname="lastname";
+  phone="phone";
+  datos:any;
+
 
   constructor(public navCtrl: NavController, private barcodeScanner: BarcodeScanner, private contacts: Contacts) {
 
@@ -22,11 +27,14 @@ export class HomePage {
   scanCode(): void {
     this.barcodeScanner.scan().then(barcodeData => {
       this.scannedCode = barcodeData.text;
+      this.datos=JSON.parse(barcodeData.text);
       
       let contact: Contact = this.contacts.create();
-      contact.name= new ContactName(null,this.scannedCode.lastname,this.scannedCode.name);
-      contact.phoneNumbers = [new ContactField('mobile', this.scannedCode.phone)];
+      contact.name= new ContactName(null,this.datos.lastname,this.datos.name);
+      contact.phoneNumbers = [new ContactField('mobile', this.datos.phone)];
       
+      
+            
       contact.save().then(
         () => {
           console.log('Contact Guardado!', contact);
